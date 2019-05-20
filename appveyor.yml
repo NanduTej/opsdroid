@@ -7,20 +7,21 @@ environment:
 
     - PYTHON: "C:\\Python35-x64"
       TOXENV: "py35"
-    - PYTHON: "C:\\Python36-x64"
-      TOXENV: "py36"
-    - PYTHON: "C:\\Python37-x64"
-      TOXENV: "py37"
+#    - PYTHON: "C:\\Python36-x64"
+#      TOXENV: "py36"
+#    - PYTHON: "C:\\Python37-x64"
+#      TOXENV: "py37"
 
-matrix:
-  allow_failures:
-    - TOXENV: "py35"
+#matrix:
+#  allow_failures:
+#    - TOXENV: "py35"
 
 install:
   - "%PYTHON%\\python.exe -m pip install --upgrade pip setuptools"
-  - "%PYTHON%\\python.exe -m pip install tox"
+  - "%PYTHON%\\python.exe -m pip install --upgrade tox"
+  - "%PYTHON%\\python.exe -m pip install --upgrade aiosqlite"
 
 build: off
 
 test_script:
-  - "%PYTHON%\\python.exe -m tox"
+  - "%PYTHON%\\python.exe -m tox -e py35"
